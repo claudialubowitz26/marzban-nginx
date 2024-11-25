@@ -1,5 +1,8 @@
 #!/bin/bash
 
+port=$(netstat -tunlp | grep 'python' | awk '{split($4, a, ":"); print a[2]}')
+
+
 # // Code for service
 export RED='\033[0;31m';
 export GREEN='\033[0;32m';
@@ -35,14 +38,14 @@ else
 fi
 
 # MARZBAN
-if [[ $(netstat -ntlp | grep -i python | grep -i "127.0.0.0:8000" | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == "8000" ]]; then
+if [[ $(netstat -ntlp | grep -i python | grep -i "127.0.0.1:${port}" | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == "${port}" ]]; then
     MARZ="${GREEN}Okay${NC}";
 else
     MARZ="${RED}Not Okay${NC}";
 fi
 
 # XRAY
-if [[ $(netstat -ntlp | grep -i xray | grep -i 127.0.0.1:4001 | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == '2022' ]]; then
+if [[ $(netstat -ntlp | grep -i xray | grep -i "127.0.0.1:2023" | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == '2023' ]]; then
     XRAY="${GREEN}Okay${NC}";
 else
     XRAY="${RED}Not Okay${NC}";
