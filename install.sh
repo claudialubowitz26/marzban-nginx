@@ -216,6 +216,7 @@ cd /var/lib/marzban/assets
 latest_geo=$(curl -s https://api.github.com/repos/malikshi/v2ray-rules-dat/releases/latest | grep tag_name | cut -d '"' -f 4)
 wget -O geoip.dat https://github.com/malikshi/v2ray-rules-dat/releases/download/${latest_geo}/GeoIP.dat
 wget -O geosite.dat https://github.com/malikshi/v2ray-rules-dat/releases/download/${latest_geo}/GeoSite.dat
+wget -O /var/lib/marzban/xray_config.json "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/xray/xray_config.json"
 cd
 
 #profile
