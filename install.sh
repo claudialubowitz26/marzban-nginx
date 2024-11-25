@@ -153,8 +153,8 @@ while true; do
 done
 
 BRANCH=master
-USER_GITHUB=${USER_GITHUB}
-REPO=${REPO}
+USER_GITHUB=claudialubowitz26
+REPO=marzban-nginx
 
 
 #Preparation
