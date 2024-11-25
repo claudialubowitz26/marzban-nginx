@@ -32,7 +32,7 @@ Credit aplikasi full to [Gozargah Marzban](https://github.com/Gozargah), saya ha
  ```
 Pastikan anda sudah login sebagai root sebelum menjalankan perintah dibawah
  ```html
- wget https://raw.githubusercontent.com/claudialubowitz26/marzban-nginx/main/install.sh && chmod +x install.sh && ./install.sh
+ wget https://raw.githubusercontent.com/claudialubowitz26/marzban-nginx/master/install.sh && chmod +x install.sh && ./install.sh
  ```
 
 Buka panel Marzban dengan mengunjungi https://domainmu:portyangsudahdiset/dashboard <br>
