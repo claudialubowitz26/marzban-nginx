@@ -200,7 +200,7 @@ apt-get install libio-socket-inet6-perl libsocket6-perl libcrypt-ssleay-perl lib
 sudo bash -c "$(curl -sL https://github.com/${USER_GITHUB}/Marzban-scripts/raw/master/marzban.sh)" @ install
 
 #Install Subs
-wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/main/index.html
+wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/MuhammadAshouri/marzban-templates/master/template-01/index.html
 
 #install env
 wget -O /var/lib/marzban/.env https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/main/env
