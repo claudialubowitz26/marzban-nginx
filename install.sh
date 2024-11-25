@@ -204,7 +204,7 @@ sudo bash -c "$(curl -sL https://github.com/${USER_GITHUB}/Marzban-scripts/raw/m
 wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/MuhammadAshouri/marzban-templates/master/template-01/index.html
 
 #install env
-wget -O /var/lib/marzban/.env https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/env
+wget -O /opt/marzban//.env https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/env
 
 #install core Xray & Assets folder
 mkdir -p /var/lib/marzban/assets
