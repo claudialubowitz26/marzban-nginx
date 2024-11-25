@@ -152,6 +152,7 @@ while true; do
     echo "Silakan masukkan ulang domain."
 done
 
+BRANCH=master
 USER_GITHUB=${USER_GITHUB}
 REPO=${REPO}
 
@@ -203,7 +204,7 @@ sudo bash -c "$(curl -sL https://github.com/${USER_GITHUB}/Marzban-scripts/raw/m
 wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/MuhammadAshouri/marzban-templates/master/template-01/index.html
 
 #install env
-wget -O /var/lib/marzban/.env https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/main/env
+wget -O /var/lib/marzban/.env https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/env
 
 #install core Xray & Assets folder
 mkdir -p /var/lib/marzban/assets
@@ -219,26 +220,26 @@ cd
 
 #profile
 echo -e 'profile' >> /root/.profile
-wget -O /usr/bin/profile "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/main/profile";
+wget -O /usr/bin/profile "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/profile";
 chmod +x /usr/bin/profile
 
 #updategeo
-wget -O /usr/bin/updategeo "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/main/service/updategeo.sh"
+wget -O /usr/bin/updategeo "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/service/updategeo.sh"
 chmod +x /usr/bin/updategeo
 
 #cekservice
 apt install neofetch -y
-wget -O /usr/bin/cekservice "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/main/service/cekservice.sh"
+wget -O /usr/bin/cekservice "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/service/cekservice.sh"
 chmod +x /usr/bin/cekservice
 
 #install compose
-wget -O /opt/marzban/docker-compose.yml "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/main/docker-compose.yml"
+wget -O /opt/marzban/docker-compose.yml "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/docker-compose.yml"
 
 #Install VNSTAT
 apt -y install vnstat
 /etc/init.d/vnstat restart
 apt -y install libsqlite3-dev
-wget https://github.com/${USER_GITHUB}/${REPO}/raw/main/vnstat-2.6.tar.gz
+wget https://github.com/${USER_GITHUB}/${REPO}/raw/${BRANCH}/vnstat-2.6.tar.gz
 tar zxvf vnstat-2.6.tar.gz
 cd vnstat-2.6
 ./configure --prefix=/usr --sysconfdir=/etc && make && make install 
@@ -258,8 +259,8 @@ mkdir -p /var/log/nginx
 touch /var/log/nginx/access.log
 touch /var/log/nginx/error.log
 
-wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/main/nginx/nginx.conf"
-wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/main/nginx/xray.conf"
+wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/nginx/nginx.conf"
+wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/${USER_GITHUB}/${REPO}/${BRANCH}/nginx/xray.conf"
 sed -i "s/\$domain/$domain/g" "/opt/marzban/xray.conf"
 mkdir -p /var/www/html
 echo "<pre>Hello World!</pre>" > /var/www/html/index.html
@@ -288,7 +289,7 @@ sudo ufw allow 4001/udp
 yes | sudo ufw enable
 
 #install database
-wget -O /var/lib/marzban/db.sqlite3 "https://github.com/${USER_GITHUB}/${REPO}/raw/main/db.sqlite3"
+wget -O /var/lib/marzban/db.sqlite3 "https://github.com/${USER_GITHUB}/${REPO}/raw/${BRANCH}/db.sqlite3"
 
 
 #update host marzban config
@@ -309,7 +310,7 @@ SQL_QUERY="UPDATE hosts SET address = '$domain' WHERE address = 'subdomain.lumin
 sqlite3 "$DB_NAME" "$SQL_QUERY"
 
 #install WARP Proxy
-wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/main/install_warp_proxy.sh"
+wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/${BRANCH}/install_warp_proxy.sh"
 sudo chmod +x /root/warp
 sudo bash /root/warp -y 
 
