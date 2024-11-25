@@ -156,7 +156,6 @@ BRANCH=master
 USER_GITHUB=claudialubowitz26
 REPO=marzban-nginx
 
-
 #Preparation
 cd;
 apt-get update;
@@ -164,7 +163,8 @@ apt-get update;
 #Remove unused Module
 apt-get -y --purge remove samba*;
 apt-get -y --purge remove apache2*;
-apt-get -y --purge remove sendmail*;
+apt-get -y --purge remove sendma
+il*;
 apt-get -y --purge remove bind9*;
 
 #install bbr
@@ -310,7 +310,7 @@ SQL_QUERY="UPDATE hosts SET address = '$domain' WHERE address = 'subdomain.lumin
 sqlite3 "$DB_NAME" "$SQL_QUERY"
 
 #install WARP Proxy
-wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/${BRANCH}/install_warp_proxy.sh"
+wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/main/install_warp_proxy.sh"
 sudo chmod +x /root/warp
 sudo bash /root/warp -y 
 
